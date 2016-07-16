@@ -1,43 +1,42 @@
-/* please implement your assign1 code in this file. */
-
 /*
-  draw a small house
-  author:s5048218
-  update:2016/07/14
+author:s5048218@gmail.com
+update:2016/07/16
 */
-int x,y,w,h;
-int r,g,b;
-
-void setup(){
-  size(640,480);
-
-  x=80;
-  y=50;
-  w=40;
-  h=30;
+PImage bg1,bg2,treasure,hp,fighter,enemy;
+int x,y,z; 
+float a,b,c;
+void setup () {
+  size(640,480) ;
+  x=0;  //bg1
+  y=-640;  //bg2
+  z=0;  //speed
+  bg1=loadImage("img/bg1.png");
+  bg2=loadImage("img/bg2.png");
+  treasure=loadImage("img/treasure.png");
+  hp=loadImage("img/hp.png");
+  fighter=loadImage("img/fighter.png");
+  enemy=loadImage("img/enemy.png");
+  a=random(0,600);
+  b=random(10,440);
+  c=random(10,200);
 }
 
-void draw(){
-  background(0);
-  r=floor(random(256));
-  g=floor(random(256));
-  b=floor(random(256));
-  x=x+1;
-  x%=300;
+void draw() {
+  image(bg1,y,0);
+  image(bg2,x,0);
   
-  //roff
-  stroke(255);   //white
-  fill(r,g,b);   //color
-  triangle(x+w/2,y,x,y+h/2,x+w,y+h/2);
+  // hp
+  fill(256,0,0);
+  rect(20,10,c,25);
+  image(hp,10,10);
   
-  rectMode(CORNERS);
+  image(treasure,a,b);
+  image(enemy,(z%640),320);
+  image(fighter,590,240);
   
-  //wall
-  fill(#ffff00);
-  rect(x,y+h/2,x+w,y+h);
-  
-  //door
-  stroke(0);
-  fill(255);
-  rect(x+w/2,y+4.0/6*h,x+5.0/6*w,y+h);
+  x+=2;
+  y+=2;
+  z+=5;
+  x=x-(int(x/640)*1280);
+  y=y-(int(y/640)*1280);
 }
