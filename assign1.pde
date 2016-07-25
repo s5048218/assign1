@@ -16,7 +16,7 @@ void setup () {
   hp=loadImage("img/hp.png");
   fighter=loadImage("img/fighter.png");
   enemy=loadImage("img/enemy.png");
-  a=random(0,600);
+  a=random(30,600);
   b=random(10,440);
   c=random(10,200);
 }
